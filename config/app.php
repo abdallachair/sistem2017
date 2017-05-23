@@ -1,7 +1,9 @@
 <?php
 
 return [
-
+    
+    'allowedFileTypes' => 'jpg,jpeg,bmp,png',
+    'allowedFileTypes2' => 'pdf',
     /*
     |--------------------------------------------------------------------------
     | Application Name

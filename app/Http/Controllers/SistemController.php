@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Article;
 use Storage;
 use App\Category;
+use App\Repository_category;
+use App\Repository;
 use App\Photo;
 
 use Illuminate\Support\Facades\DB;
@@ -21,10 +23,17 @@ class SistemController extends Controller
     }
     
     public function article_index(){
-        $articles = Article::all();
+        $articles = Article::orderBy('created_at', 'desc')->paginate(4);
         $categories = Category::all();
         $photos = Photo::all();
         return view('pages/article_index',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
+    }
+    
+    public function repository_index(){
+        $repository_categories = Repository_category::orderBy('created_at', 'desc')->paginate(3);
+        $repository_categories2 = Repository_category::all();
+        $repositories = Repository::orderBy('created_at', 'desc')->paginate(3);
+        return view('pages/repository_index',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
     }
     
     public function about(){
@@ -77,7 +86,7 @@ class SistemController extends Controller
             endforeach;
         endif;
         
-        return view('pages/admin',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]); 
+        return redirect()->action('SistemController@article_index'); 
     }
     
     public function editArticleView(Request $request){
@@ -91,8 +100,20 @@ class SistemController extends Controller
         
         $files = $request->file('file');
         
-        $simpan = Article::create([
-           'judul'=>$request->judul_berita,
+        if(!empty($files)):
+        
+            foreach($files as $file):
+                $allowedFileTypes = config('app.allowedFileTypes');
+                $rules = [
+                    'file' => 'required|mimes:'.$allowedFileTypes
+                ];
+                $this->validate($request, $rules);
+            endforeach;
+        
+        endif;
+        
+         $simpan = Article::create([
+            'judul'=>$request->judul_berita,
             'konten'=>$request->konten_berita,
             'kategori'=>$request->pilih_kategori,
             'display'=>$request->display
@@ -101,7 +122,6 @@ class SistemController extends Controller
         if(!empty($files)):
         
             foreach($files as $file):
-           //     Storage::put($file->getClientOriginalName(), file_get_contents($file));
                 $file->move('src/img/article_photos', $file->getClientOriginalName());
                 Photo::create([
                     'img_src'=>$file->getClientOriginalName(),
@@ -111,12 +131,61 @@ class SistemController extends Controller
         
         endif;
         
+       
         
         $photos = Photo::all();
         $articles = Article::all();
         $categories = Category::all();
         
-        return view('pages/sistem_admin_page_xXx',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
+        return redirect()->action('SistemController@article_index');
+    }
+    
+    public function insertRepository(Request $request){
+        
+        $files = $request->file('file');
+        
+        if(!empty($files)):
+        
+            foreach($files as $file):
+                $allowedFileTypes = config('app.allowedFileTypes2');
+                $rules = [
+                    'file' => 'required|mimes:'.$allowedFileTypes
+                ];
+                $this->validate($request, $rules);
+            endforeach;
+        
+        endif; 
+        
+        if(!empty($files)):
+        
+            foreach($files as $file):
+                $file->move('src/files', $file->getClientOriginalName());
+                $simpan = Repository::create([
+                    'nama'=>$request->$file->getClientOriginalName(),
+                    'kategori_repositori'=>$request->pilih_kategori
+                ]);
+            endforeach;
+        
+        endif;
+       
+        $photos = Photo::all();
+        $articles = Article::all();
+        $repository_categories = Repository_category::all();
+        
+        return redirect()->action('SistemController@repository_index');
+    }
+    
+    public function insertRepositoryCategory(Request $request){
+        
+        $simpan = Repository_category::create([
+            'nama_kategori'=>$request->nama_kategori
+        ]);
+       
+        $photos = Photo::all();
+        $articles = Article::all();
+        $repository_categories = Repository_category::all();
+        
+        return redirect()->action('SistemController@repository_index');
     }
         
 }

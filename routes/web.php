@@ -12,11 +12,16 @@
 */
 
 Route::get('/', 'SistemController@home');
+
 Route::post('news', 'SistemController@insertBerita');
+Route::post('repository_files', 'SistemController@insertRepository');
+Route::post('repositories_category', 'SistemController@insertRepositoryCategory');
+
 Route::get('/about', 'SistemController@about');
 
 Route::get('/admin', 'SistemController@admin');
 Route::get('/admin_article', 'SistemController@article_index');
+Route::get('/admin_repository', 'SistemController@repository_index');
 
 Route::post('edit_article', 'SistemController@editArticle');
 Route::post('edit_article_open', 'SistemController@editArticleView');

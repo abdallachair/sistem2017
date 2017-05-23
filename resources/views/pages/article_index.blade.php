@@ -8,56 +8,81 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+                    <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
 					</li>
 				
 					
                     <li>
-                        <a   href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a   href="admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                       <li>
-                        <a class="active-menu" href="ui.html"><i class="fa fa-desktop fa-3x"></i> Edit Artikel</a>
+                        <a class="active-menu" href="admin_article"><i class="fa fa-desktop fa-3x"></i> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Edit Repository</a>
+                        <a  href="admin_repository"><i class="fa fa-qrcode fa-3x"></i> Edit Repository</a>
                     </li>
                 </ul>
             </div>
 @endsection
 
 @section('content')
-        <br>
-        <br>
-        <div class="article_panel">
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Judul</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($articles as $article)
-                        <tr>
-                            <td>{{$article->id}}</td>
-                            <form method="post" action="edit_article_open">
-                                {{ csrf_field() }}
-                            <td>{{$article -> judul}}</td>
-                            <td><button type="submit" class="btn btn-primary brown lighten-3">Edit</button>
-                                <input type="hidden" name="article_id" value="{{$article->id}}"></td>
-                             </form>
-                        </tr> 
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    <br>
-    <br>
+<h2>Article Dashboard</h2>   
+<h5>Welcome</h5>
 
-    <div>
-        <h2>Buat Berita</h2>
+<div class="row">
+    <div class="col-md-12 col-md-ffset-3">
+        <div class="article_panel panel panel-danger">
+            <div class="panel-heading">
+                Articles
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach($articles as $article)
+                    <li class="list-group-item" style="margin-top: 20px">
+                        <span >
+                            {{$article->id}}
+                        </span>
+                        <form method="post" action="edit_article_open">
+                                    {{ csrf_field() }}
+                            <span>{{$article -> judul}}</span>
+                            <span class="pull-right clearfix">
+                            @if($article->display == 1)
+                                <span>Displayed,</span>
+                            @else
+                                <span>Not Displayed,</span>
+                            @endif
+                            Created({{$article->created_at->diffForHumans()}})
+                            <button type="submit" class="btn btn-danger brown lighten-3">Edit</button>
+                            <input type="hidden" name="article_id" value="{{$article->id}}"></span>
+                        </form>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="panel-footer">
+                {{$articles -> links()}}
+            </div>
+        </div>
     </div>
+</div>
+<hr />
+<div class="row">
+    
+    <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="article_edit">
+                <div>
+        <h2>Buat Artikel</h2>
+    </div>
+    <span>
+    @if(count($errors))
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
+    </span>
     <form method="post" action="news" enctype="multipart/form-data">
         {{ csrf_field() }}
         
@@ -67,7 +92,7 @@
             </div>
             <div class="form-group">
                 <label for="nama_paket">Konten Berita</label><br>
-                <textarea name="konten_berita" rows="4" cols="50"></textarea>
+                <textarea name="konten_berita" rows="7" cols="78"></textarea>
                 <!--<input type="text" class="form-control" id="insert-deskripsi" name="deskripsi" placeholder="tuliskan deskripsi toko mu" required>-->
             </div>
             <div class="form-group">
@@ -87,20 +112,23 @@
             </div>
             <label for="nama_paket">Image</label>
             <input type="file" name="file[]" multiple><br />
-        <button type="submit" class="btn btn-primary brown lighten-3">Submit</button>
+        <button type="submit" class="btn btn-danger brown lighten-3">Submit</button>
     </form>
     <div id="upload_message"></div>
-    
-    
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+</div>
+
+                
+ 
 @endsection
         
 @section('style')
     <style>
         div.article_panel {
-            background-color: #00FFFF;
-            width: 200px;
-            height: 200px;
-            overflow: scroll;
-        }   
+            width: 100%;
+            height: 500px;
+        }
     </style>
 @endsection

@@ -1,13 +1,36 @@
-@extends('layouts.master')
+@extends('layouts.admin_master')
 
 @section('title')
     Edit Artikel - Sistem Fasilkom 2017
 @endsection
 
+@section('navbar')
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
+					</li>
+				
+					
+                    <li>
+                        <a   href="admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                      <li>
+                        <a class="active-menu" href="admin_article"><i class="fa fa-desktop fa-3x"></i> Edit Artikel</a>
+                    </li>
+                    <li>
+                        <a  href="admin_repository"><i class="fa fa-qrcode fa-3x"></i> Edit Repository</a>
+                    </li>
+                </ul>
+            </div>
+@endsection
+
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
     <form method="post" action="edit_article" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <label>Article Id: {{$article->id}}</label>
+            <h2>Article Id: {{$article->id}}</h2>
             <input type="hidden" name="article_id" value="{{$article->id}}">
         
             <div class="form-group">
@@ -30,8 +53,13 @@
             <div class="form-group">
                 <label for="nama_paket">Display artikelnya?</label><br>
                 <select name="display">
-                    <option value=1>Ya</option>
-                    <option value=0>Tidak</option>
+                    @if($article->display == 1)
+                        <option value=1 selected>Ya</option>
+                        <option value=0>Tidak</option>
+                    @else
+                        <option value=1>Ya</option>
+                        <option value=0 selected>Tidak</option>
+                    @endif
                 </select>
             </div>
             <div class="form-group">
@@ -69,6 +97,9 @@
     </form>
 
     <div id="message"></div>
+            </div>
+        </div>
+<hr />
 @endsection
 
 @section('script')

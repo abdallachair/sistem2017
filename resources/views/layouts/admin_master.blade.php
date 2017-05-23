@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
+                <a class="navbar-brand" href="index.html">SISTEM admin</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -38,15 +38,9 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Admin Dashboard</h2>   
-                        <h5>Welcome</h5>
-                     @yield('content')
-                    </div>
-                </div>
+                    @yield('content')
                  <!-- /. ROW  -->
-                 <hr />
+                 
                
     </div>
              <!-- /. PAGE INNER  -->
