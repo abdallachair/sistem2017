@@ -32,7 +32,7 @@ class SistemController extends Controller
     public function repository_index(){
         $repository_categories = Repository_category::orderBy('created_at', 'desc')->paginate(3);
         $repository_categories2 = Repository_category::all();
-        $repositories = Repository::orderBy('created_at', 'desc')->paginate(3);
+        $repositories = Repository::all();
         return view('pages/repository_index',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
     }
     
@@ -48,20 +48,25 @@ class SistemController extends Controller
     }
     
     public function editArticle(Request $request){
-        DB::table('articles')
-            ->where('id', $request->article_id)
-            ->update([
-                'judul'=>$request->judul_berita,
-                'konten'=>$request->konten_berita,
-                'kategori'=>$request->pilih_kategori,
-                'display'=>$request->display
-            ]);
+        
         
         $articles = Article::all();
         $categories = Category::all();
         $photos = Photo::all();
         
         $files = $request->file('file');
+        
+        if(!empty($files)):
+        
+            foreach($files as $file):
+                $allowedFileTypes = config('app.allowedFileTypes');
+                $rules = [
+                    'file' => 'required|mimes:'.$allowedFileTypes
+                ];
+                $this->validate($request, $rules);
+            endforeach;
+        
+        endif;
         
         if(!empty($files)):
         
@@ -76,11 +81,20 @@ class SistemController extends Controller
         
         endif;
         
+        DB::table('articles')
+            ->where('id', $request->article_id)
+            ->update([
+                'judul'=>$request->judul_berita,
+                'konten'=>$request->konten_berita,
+                'kategori'=>$request->pilih_kategori,
+                'display'=>$request->display
+            ]);
+        
         $photo_ids = $request->photo_id;
         
         if(is_array($photo_ids)):
             foreach($photo_ids as $photo_id):
-                $photo = Photo::find($photo_id);
+                $photo = Photo::find($photo_id);    
                 DB::table('photos')->where('id', '=', $photo_id)->delete();
                 File::delete('src/img/article_photos/' .$photo->img_src);
             endforeach;
@@ -144,17 +158,17 @@ class SistemController extends Controller
         
         $files = $request->file('file');
         
-        if(!empty($files)):
+        //if(!empty($files)):
         
-            foreach($files as $file):
+            //foreach($files as $file):
                 $allowedFileTypes = config('app.allowedFileTypes2');
                 $rules = [
                     'file' => 'required|mimes:'.$allowedFileTypes
                 ];
                 $this->validate($request, $rules);
-            endforeach;
+          //  endforeach;
         
-        endif; 
+      //  endif; 
         
         if(!empty($files)):
         

@@ -56,7 +56,6 @@
                 
             </div>
             <div class="panel-footer">
-                {{$repositories -> links()}}
             </div>
         </div>
             </div>
@@ -118,6 +117,9 @@
         div.article_panel {
             width: 100%;
             height: 500px;
+        }
+        .list-group-item{
+            overflow: scroll;
         }
     </style>
 @endsection

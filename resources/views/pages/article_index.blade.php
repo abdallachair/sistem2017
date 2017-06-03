@@ -13,13 +13,13 @@
 				
 					
                     <li>
-                        <a   href="admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a href="admin"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
                     </li>
                       <li>
-                        <a class="active-menu" href="admin_article"><i class="fa fa-desktop fa-3x"></i> Edit Artikel</a>
+                        <a class="active-menu" href="admin_article"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  href="admin_repository"><i class="fa fa-qrcode fa-3x"></i> Edit Repository</a>
+                        <a  href="admin_repository"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
                     </li>
                 </ul>
             </div>
@@ -65,7 +65,9 @@
         </div>
     </div>
 </div>
+
 <hr />
+
 <div class="row">
     
     <div class="col-md-3"></div>

@@ -5,7 +5,7 @@
 @endsection 
 
 @section('navbar')
-<div class="sidebar-collapse">
+            <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
@@ -13,13 +13,13 @@
 				
 					
                     <li>
-                        <a  class="active-menu" href="admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu"  href="admin"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
                     </li>
                       <li>
-                        <a  href="admin_article"><i class="fa fa-desktop fa-3x"></i> Edit Artikel</a>
+                        <a  href="admin_article"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  href="admin_repository"><i class="fa fa-qrcode fa-3x"></i> Edit Repository</a>
+                        <a  href="admin_repository"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
                     </li>
                 </ul>
             </div>
