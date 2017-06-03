@@ -46,7 +46,7 @@
                         <span >
                             @foreach($repositories as $repository)
                                 @if($repository_category->id == $repository->kategori_repositori)
-                                    <a href="">{{$repository->nama}}</a>
+                            <a href="">{{$repository->nama}}</a></br>
                                 @endif
                             @endforeach
                         </span>

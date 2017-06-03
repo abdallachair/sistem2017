@@ -115,14 +115,25 @@ class SistemController extends Controller
         $files = $request->file('file');
         
         if(!empty($files)):
+            
+            $nbr = count($request->file('file')) - 1;
         
-            foreach($files as $file):
+            foreach(range(0, $nbr) as $index):
+                $allowedFileTypes = config('app.allowedFileTypes');
+                $rules['file.' . $index] = 'required|mimes:'.$allowedFileTypes;
+                /*$rules = [
+                    'file' => 'required|mimes:'.$allowedFileTypes
+                ];*/
+                
+                $this->validate($request, $rules);
+            endforeach;
+            /*foreach($files as $file):
                 $allowedFileTypes = config('app.allowedFileTypes');
                 $rules = [
                     'file' => 'required|mimes:'.$allowedFileTypes
                 ];
                 $this->validate($request, $rules);
-            endforeach;
+            endforeach;*/
         
         endif;
         
@@ -158,29 +169,29 @@ class SistemController extends Controller
         
         $files = $request->file('file');
         
-        //if(!empty($files)):
-        
-            //foreach($files as $file):
-                $allowedFileTypes = config('app.allowedFileTypes2');
-                $rules = [
-                    'file' => 'required|mimes:'.$allowedFileTypes
-                ];
-                $this->validate($request, $rules);
-          //  endforeach;
-        
-      //  endif; 
-        
         if(!empty($files)):
+            $nbr = count($request->file('file')) - 1;
         
+            foreach(range(0, $nbr) as $index):
+                $allowedFileTypes = config('app.allowedFileTypes2');
+                $rules['file.' . $index] = 'required|mimes:'.$allowedFileTypes;
+                /*$rules = [
+                    'file' => 'required|mimes:'.$allowedFileTypes
+                ];*/
+                
+                $this->validate($request, $rules);
+            endforeach;
+            
             foreach($files as $file):
                 $file->move('src/files', $file->getClientOriginalName());
                 $simpan = Repository::create([
-                    'nama'=>$request->$file->getClientOriginalName(),
+                    'nama'=>$file->getClientOriginalName(),
                     'kategori_repositori'=>$request->pilih_kategori
                 ]);
             endforeach;
+         
+        endif; 
         
-        endif;
        
         $photos = Photo::all();
         $articles = Article::all();
