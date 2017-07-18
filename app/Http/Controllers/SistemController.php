@@ -15,11 +15,9 @@ use \File as File;
 
 class SistemController extends Controller
 {
-    public function home(){
-        $articles = Article::all();
-        $categories = Category::all();
-        $photos = Photo::all();
-        return view('pages/index',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
     }
     
     public function article_index(){
@@ -34,10 +32,6 @@ class SistemController extends Controller
         $repository_categories2 = Repository_category::all();
         $repositories = Repository::all();
         return view('pages/repository_index',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
-    }
-    
-    public function about(){
-        return view('pages/about');
     }
     
     public function admin(){
@@ -71,10 +65,10 @@ class SistemController extends Controller
         if(!empty($files)):
         
             foreach($files as $file):
-           //     Storage::put($file->getClientOriginalName(), file_get_contents($file));
-                $file->move('src/img/article_photos', $file->getClientOriginalName());
+                Storage::put($file->getClientOriginalName(), file_get_contents($file));
+                $files->move('src/img/article_photos', $files->getClientOriginalName());
                 Photo::create([
-                    'img_src'=>$file->getClientOriginalName(),
+                    'img_src'=>$files->getClientOriginalName(),
                     'article_id'=> $request->article_id
                 ]);
             endforeach;

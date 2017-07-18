@@ -8,18 +8,18 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
+                    <img src="{{ URL::to('/') }}/src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
 					</li>
 				
 					
                     <li>
-                        <a   href="admin"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
+                        <a   href="{{ URL::to('/sistem-admin') }}"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
                     </li>
                       <li>
-                        <a class="active-menu" href="admin_article"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
+                        <a class="active-menu" href="{{ URL::to('/sistem-admin/admin_article') }}"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  href="admin_repository"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
+                        <a  href="{{ URL::to('/sistem-admin/admin_repository') }}"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
                     </li>
                 </ul>
             </div>
@@ -73,27 +73,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $count = 0;?>
                     @foreach($photos as $photo)
                         <tr>
                             @if($article->id === $photo->article_id)
                                 <td>{{$photo->id}}</td>
                                     {{ csrf_field() }}
                                 <td>
-                                    <img src="{{'src/img/article_photos/'.$photo->img_src}}" style="width: 20%;">
+                                    <img src="{{'/src/img/article_photos/'.$photo->img_src}}" style="width: 20%;">
                                 </td>
                                 <td>
                                     <input type="hidden" value="{{$photo->img_src}}" name="img_src">
                                     <input type="checkbox" name="photo_id[]" value="{{{$photo->id}}}">
                                  </td>
                         </tr>
+                            <?php $count++; ?>
                             @endif 
                     @endforeach
                 </tbody>
             </table>
             </div>
-            <label for="nama_paket">Upload Image</label>
-            <input type="file" name="file[]" multiple><br />
-        <button type="submit" class="btn btn-primary brown lighten-3">Submit</button>
+            @if($count === 0)
+                <label for="nama_paket">Upload Image</label>
+                <input type="file" name="file[]" multiple><br />
+            @endif
+            <button type="submit" class="btn btn-primary brown lighten-3">Submit</button>
     </form>
 
     <div id="message"></div>

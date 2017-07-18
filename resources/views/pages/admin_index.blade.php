@@ -8,18 +8,18 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
+                    <img src="{{ URL::to('/') }}/src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
 					</li>
 				
 					
                     <li>
-                        <a class="active-menu"  href="admin"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
+                        <a class="active-menu"  href="{{ URL::to('/sistem-admin') }}"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
                     </li>
                       <li>
-                        <a  href="admin_article"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
+                        <a  href="{{ URL::to('/sistem-admin/admin_article') }}"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  href="admin_repository"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
+                        <a  href="{{ URL::to('/sistem-admin/admin_repository') }}"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
     <div class="col-md-6">
         <div class="article_edit">
             <h2 class="text-center">Edit Article</h2>
-            <a href="admin_article" class="text-center"><img class="user-image img-responsive" style="width: 50%;" src="src/img/432754-business-ad-statistics/png/067-document.png"></a>
+            <a href="{{ URL::to('/sistem-admin/admin_article') }}" class="text-center"><img class="user-image img-responsive" style="width: 50%;" src="{{ URL::to('/') }}/src/img/432754-business-ad-statistics/png/067-document.png"></a>
         </div>
     </div>
     <div class="col-md-3"></div>
@@ -42,7 +42,7 @@
     <div class="col-md-6">
         <div class="repository_edit">
             <h2 class="text-center">Edit Repository</h2>
-            <a href="admin_repository" class="text-center"><img class="user-image img-responsive" style="width: 50%;" src="src/img/432754-business-ad-statistics/png/055-server.png"></a>
+            <a href="{{ URL::to('/sistem-admin/admin_repository') }}" class="text-center"><img class="user-image img-responsive" style="width: 50%;" src="{{ URL::to('/') }}/src/img/432754-business-ad-statistics/png/055-server.png"></a>
         </div>
     </div>
     <div class="col-md-3"></div>

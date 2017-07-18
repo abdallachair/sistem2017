@@ -8,18 +8,18 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
+                    <img src="{{ URL::to('/') }}/src/img/Cap SISTEM.jpg" class="user-image img-responsive"/>
 					</li>
 				
 					
                     <li>
-                        <a   href="admin"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
+                        <a   href="{{ URL::to('/sistem-admin') }}"><span class="glyphicon glyphicon-modal-window"></span> Dashboard</a>
                     </li>
                       <li>
-                        <a  href="admin_article"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
+                        <a  href="{{ URL::to('/sistem-admin/admin_article') }}"><span class="glyphicon glyphicon-edit"></span> Edit Artikel</a>
                     </li>
                     <li>
-                        <a  class="active-menu" href="admin_repository"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
+                        <a class="active-menu" href="{{ URL::to('/sistem-admin/admin_repository') }}"><span class="glyphicon glyphicon-th-list"></span> Edit Repository</a>
                     </li>
                 </ul>
             </div>
