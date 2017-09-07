@@ -235,6 +235,6 @@
 <script src="js/jquery.mb.YTPlayer.js"></script>
 <!-- Custom Script -->
 <script src="js/scripts.js"></script>
-
+@yield('footer')
 </body>
 </html>

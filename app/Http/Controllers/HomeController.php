@@ -78,4 +78,12 @@ class HomeController extends Controller
         $photos = Photo::all();
         return view('pages/home/news/article_view', ['article' => $article, 'categories' => $categories, 'photos'=>$photos]);
     }
+
+    public function product(){
+        $repository_categories = Repository_category::all();
+        $repository_categories2 = Repository_category::all();
+        $repositories = Repository::all();
+        return view('pages/home/product',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
+    }
+    
 }

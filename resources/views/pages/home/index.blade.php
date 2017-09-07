@@ -31,7 +31,7 @@
             </li>
 
             <!-- /Blog -->
-            <li><a href="contact.html">PRODUCTS</a></li>
+            <li><a href="product">PRODUCTS</a></li>
             <li><a href="contact.html">CONTACT</a></li>
         </ul>
     </div>
