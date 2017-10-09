@@ -108,13 +108,12 @@ class SistemController extends Controller
         
         $files = $request->file('file');
         
-        if(!empty($files)):
-            
             $nbr = count($request->file('file')) - 1;
         
             foreach(range(0, $nbr) as $index):
                 $allowedFileTypes = config('app.allowedFileTypes');
                 $rules['file.' . $index] = 'required|mimes:'.$allowedFileTypes;
+                $rules2['file.' . $index] = 'required';
                 /*$rules = [
                     'file' => 'required|mimes:'.$allowedFileTypes
                 ];*/
@@ -129,8 +128,6 @@ class SistemController extends Controller
                 $this->validate($request, $rules);
             endforeach;*/
         
-        endif;
-        
          $simpan = Article::create([
             'judul'=>$request->judul_berita,
             'konten'=>$request->konten_berita,
@@ -138,19 +135,14 @@ class SistemController extends Controller
             'display'=>$request->display
         ]);
         
-        if(!empty($files)):
         
-            foreach($files as $file):
-                $file->move('src/img/article_photos', $file->getClientOriginalName());
-                Photo::create([
-                    'img_src'=>$file->getClientOriginalName(),
-                    'article_id'=> $simpan->id
-                ]);
-            endforeach;
-        
-        endif;
-        
-       
+        foreach($files as $file):
+            $file->move('src/img/article_photos', $file->getClientOriginalName());
+            Photo::create([
+                'img_src'=>$file->getClientOriginalName(),
+                'article_id'=> $simpan->id
+            ]);
+        endforeach;
         
         $photos = Photo::all();
         $articles = Article::all();

@@ -18,6 +18,7 @@ class CreateTableImages extends Migration
             $table->timestamps();
             $table->string('img_src');
             $table->integer('article_id');
+            $table->boolean('thumbnail');
         });
     }
 

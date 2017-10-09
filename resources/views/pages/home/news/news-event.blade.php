@@ -76,7 +76,7 @@
                                                 <div class="owl-item-thumb">
                                                     @foreach($photos as $photo)
                                                         <?php if($count_photo === 1) break; ?>
-                                                        @if($article->id === $photo->article_id)
+                                                        @if($article->id === $photo->article_id && $photo->thumbnail === true)
                                                             <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img class="pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt=""></a>
                                                             <?php $count_photo++;
                                                             $ada_photo++;?>
@@ -90,7 +90,7 @@
                                                     <form method="post" action="article_view">
                                                         {{ csrf_field() }}
                                                     <h3><a href="#">{{$article->judul}}</a></h3>
-                                                    <p>{{$article->created_at}}<p>
+                                                    <p>{{date('d F Y', strtotime($article->created_at))}}<p>
                                                     <p>{{str_limit($article->konten, 70)}}</p>
                                                     <button type="submit" class="btn btn-primary" href="#">Continue reading<i class="fa fa-long-arrow-right"></i></button>
                                                     <input type="hidden" name="article_id" value="{{$article->id}}">
@@ -120,14 +120,22 @@
                         </div>
                     </section>
                 @endif
-                        <section class="pagination-wrap">
-
-									<div class="pagination">
-                                        {{$articles -> links()}}
-									</div>
-								
-
-							</section>	
+                
+                        	
     
 @endsection
 
+@section('pagination')
+    <div class="container">
+        <div class="row">
+                        
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">{{$articles -> links()}}</div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+@endsection

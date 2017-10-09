@@ -42,7 +42,7 @@
 				<section class="fleets-wrap home">
 					<div class="container text-center">
 						<div class="section-heading text-center">
-							<h1 class="section-title logo">EVENT</h1>
+							<h1 class="section-title logo">CHAMPIONSHIP</h1>
 						</div>
 					</div><!--/.container-->
                     @php
@@ -88,7 +88,7 @@
                                                 </div><!-- owl-item-thumb -->
                                                 <div class="owl-tem-content">
                                                     <h3><a href="#">{{$article->judul}}</a></h3>
-                                                    <p>{{$article->created_at}}<p>
+                                                    <p>{{date('d-m-Y', strtotime($article->created_at))}}<p>
                                                     <p>{{str_limit($article->konten, 70)}}</p>
                                                     <a class="btn btn-primary" href="#">Continue reading<i class="fa fa-long-arrow-right"></i></a>
                                                 </div><!-- owl-item-content -->

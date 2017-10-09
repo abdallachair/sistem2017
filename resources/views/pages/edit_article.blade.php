@@ -70,6 +70,7 @@
                         <th>id</th>
                         <th>Image</th>
                         <th>Remove Image</th>
+                        <th>Set as thumbnail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +87,9 @@
                                     <input type="hidden" value="{{$photo->img_src}}" name="img_src">
                                     <input type="checkbox" name="photo_id[]" value="{{{$photo->id}}}">
                                  </td>
+                                <td>
+                                    <input type="radio" name="photo_id[]" value="{{{$photo->id}}}">
+                                </td>
                         </tr>
                             <?php $count++; ?>
                             @endif 

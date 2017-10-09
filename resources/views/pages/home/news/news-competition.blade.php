@@ -42,7 +42,7 @@
 				<section class="fleets-wrap home">
 					<div class="container text-center">
 						<div class="section-heading text-center">
-							<h1 class="section-title logo">EVENT</h1>
+							<h1 class="section-title logo">COMPETITION</h1>
 						</div>
 					</div><!--/.container-->
                     @php

@@ -77,6 +77,7 @@
 			</header>
             
             @yield('content')
+            @yield('pagination')
 
 		<!-- footer-widget-section start -->
 		<section class="footer-widget-section">
