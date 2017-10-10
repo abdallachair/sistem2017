@@ -88,7 +88,11 @@
                                     <input type="checkbox" name="photo_id[]" value="{{{$photo->id}}}">
                                  </td>
                                 <td>
-                                    <input type="radio" name="photo_id[]" value="{{{$photo->id}}}">
+                                    @if($photo->thumbnail === true)
+                                        <input type="radio" name="photo_thumbnail" value="{{{$photo->id}}}" checked>
+                                    @else
+                                        <input type="radio" name="photo_thumbnail" value="{{{$photo->id}}}">
+                                    @endif
                                 </td>
                         </tr>
                             <?php $count++; ?>

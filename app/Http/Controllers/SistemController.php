@@ -81,7 +81,8 @@ class SistemController extends Controller
                 'judul'=>$request->judul_berita,
                 'konten'=>$request->konten_berita,
                 'kategori'=>$request->pilih_kategori,
-                'display'=>$request->display
+                'display'=>$request->display,
+                'thumbnail_id'=>$request->photo_thumbnail
             ]);
         
         $photo_ids = $request->photo_id;
@@ -93,6 +94,8 @@ class SistemController extends Controller
                 File::delete('src/img/article_photos/' .$photo->img_src);
             endforeach;
         endif;
+        
+        
         
         return redirect()->action('SistemController@article_index'); 
     }
@@ -132,16 +135,26 @@ class SistemController extends Controller
             'judul'=>$request->judul_berita,
             'konten'=>$request->konten_berita,
             'kategori'=>$request->pilih_kategori,
-            'display'=>$request->display
+            'display'=>$request->display,
+            'thumbnail_id'=>0
         ]);
         
-        
+        $iteration = 0;
         foreach($files as $file):
             $file->move('src/img/article_photos', $file->getClientOriginalName());
-            Photo::create([
-                'img_src'=>$file->getClientOriginalName(),
-                'article_id'=> $simpan->id
-            ]);
+            if($iteration === 0){
+               $simpan_photo = Photo::create([
+                    'img_src'=>$file->getClientOriginalName(),
+                    'article_id'=> $simpan->id,
+                ]);
+                $simpan->update(['thumbnail_id'=>$simpan_photo->id]);
+                $iteration += 1;
+            } else{
+                Photo::create([
+                    'img_src'=>$file->getClientOriginalName(),
+                    'article_id'=> $simpan->id,
+                ]);
+            }
         endforeach;
         
         $photos = Photo::all();

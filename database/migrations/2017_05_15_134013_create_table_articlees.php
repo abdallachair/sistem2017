@@ -20,7 +20,7 @@ class CreateTableArticlees extends Migration
             $table->text('konten');
             $table->integer('kategori');
             $table->boolean('display');
-            
+            $table->integer('thumbnail_id');
         });
     }
 
