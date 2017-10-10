@@ -88,7 +88,7 @@
                                     <input type="checkbox" name="photo_id[]" value="{{{$photo->id}}}">
                                  </td>
                                 <td>
-                                    @if($photo->thumbnail === true)
+                                    @if($article->thumbnail_id === $photo->id)
                                         <input type="radio" name="photo_thumbnail" value="{{{$photo->id}}}" checked>
                                     @else
                                         <input type="radio" name="photo_thumbnail" value="{{{$photo->id}}}">

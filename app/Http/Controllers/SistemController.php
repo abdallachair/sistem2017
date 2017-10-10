@@ -130,13 +130,13 @@ class SistemController extends Controller
                 ];
                 $this->validate($request, $rules);
             endforeach;*/
-        
+         $temporary_id = 123;
          $simpan = Article::create([
             'judul'=>$request->judul_berita,
             'konten'=>$request->konten_berita,
             'kategori'=>$request->pilih_kategori,
             'display'=>$request->display,
-            'thumbnail_id'=>0
+            'thumbnail_id'=>'123'
         ]);
         
         $iteration = 0;

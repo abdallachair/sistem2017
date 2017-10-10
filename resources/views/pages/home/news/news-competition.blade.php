@@ -76,7 +76,7 @@
                                                 <div class="owl-item-thumb">
                                                     @foreach($photos as $photo)
                                                         <?php if($count_photo === 1) break; ?>
-                                                        @if($article->id === $photo->article_id)
+                                                        @if($article->thumbnail_id === $photo->id)
                                                             <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img class="pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt=""></a>
                                                             <?php $count_photo++;
                                                             $ada_photo++;?>
@@ -89,7 +89,7 @@
                                                 <div class="owl-tem-content">
                                                     <h3><a href="#">{{$article->judul}}</a></h3>
                                                     <p>{{$article->created_at}}<p>
-                                                    <p>{{str_limit($article->konten, 70)}}</p>
+                                                    {{str_limit($article->konten, 70)}}
                                                     <a class="btn btn-primary" href="#">Continue reading<i class="fa fa-long-arrow-right"></i></a>
                                                 </div><!-- owl-item-content -->
                                            </div><!-- /item -->

@@ -12,7 +12,7 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
-        'judul', 'konten', 'kategori', 'display'
+        'judul', 'konten', 'kategori', 'display', 'thumbnail_id'
     ];
 
     

@@ -77,8 +77,7 @@
 									<div class="section-heading">
 										<h2 class="section-title">{{$article->judul}}</h2>
                                     </div>
-									<p>{{$article->konten}}</p>
-									
+                                    <div class="konten"></div>
 									<div class="row">
 										<div class="col-sm-6">
 											<ul>
@@ -109,5 +108,8 @@
 
 				</section>
 				<!--/Service-intro-end -->
+<script>
+    {{$article-konten}}
+</script>
 @endsection
 

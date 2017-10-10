@@ -60,8 +60,11 @@ font-size: 16px;">
     <!-- METISMENU SCRIPTS -->
     <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
-    
+    <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/plugin/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/plugin/tinymce/init-tinymce.js"></script>
+
+
    
 </body>
 </html>
