@@ -82,7 +82,7 @@
                                                     <form method="get" action="article_view">
                                                     <h3>{{$article->judul}}</a></h3>
                                                     <p>{{date('d F Y', strtotime($article->created_at))}}<p>
-                                                    {{str_limit($article->konten, 70)}}
+                                                    {!!html_entity_decode(str_limit($article->konten, 70))!!}
                                                     <button type="submit" class="btn btn-primary">Continue reading<i class="fa fa-long-arrow-right"></i></button>
                                                     <input type="hidden" name="article_id" value="{{$article->id}}">
                                                     </form>

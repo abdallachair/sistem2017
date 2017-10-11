@@ -70,7 +70,7 @@
 									<div class="section-heading">
 										<h2 class="section-title">{{$article->judul}}</h2>
                                     </div>
-                                    <div class="konten">{{$article->konten}}</div>
+                                    <div class="konten">{!!html_entity_decode($article->konten)!!}</div>
 									<div class="row">
 										<div class="col-sm-6">
 											<ul>
