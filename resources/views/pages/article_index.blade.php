@@ -42,8 +42,7 @@
                         <span >
                             {{$article->id}}
                         </span>
-                        <form method="post" action="edit_article_open">
-                                    {{ csrf_field() }}
+                        <form method="get" action="edit_article_open">
                             <span>{{$article -> judul}}</span>
                             <span class="pull-right clearfix">
                             @if($article->display == 1)

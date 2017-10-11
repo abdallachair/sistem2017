@@ -47,13 +47,23 @@
                                     <div class="owl-carousel fleet-carousel">
                                     @foreach($photos as $photo)
                                         @if($photo->article_id === $article->id)
-                                            <div class="item">
+                                            @if($photo->id === $article->thumbnail_id)
+                                                <div class="item">
                                                 <div class="owl-item-thumb">
-                                                    <img src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
+                                                    <img class="article_big_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
                                                     <div class="owl-item-overlay"></div>
                                                     <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
                                                 </div>
                                             </div>
+                                            @else
+                                                <div class="item">
+                                                <div class="owl-item-thumb">
+                                                    <img class="article_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
+                                                    <div class="owl-item-overlay"></div>
+                                                    <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
+                                                </div>
+                                            </div>
+                                            @endif
                                         @endif
                                     @endforeach
                                     </div>
@@ -68,7 +78,7 @@
 
 								<div class="service-intro-content">
 									<div class="section-heading">
-										<h2 class="section-title">{{$article->judul}}</h2>
+										<h2 style="text-transform: capitalize;" class="section-title">{{$article->judul}}</h2>
                                     </div>
                                     <div class="konten">{!!html_entity_decode($article->konten)!!}</div>
 									<div class="row">

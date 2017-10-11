@@ -63,7 +63,14 @@ font-size: 16px;">
     <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/plugin/tinymce/tinymce.min.js"></script>
     <script type="text/javascript" src="{{ URL::to('/') }}/tinymce/plugin/tinymce/init-tinymce.js"></script>
-
+    <style>
+        .article_pict{
+            width: 250px;
+        }
+        .article_big_pict{
+            width: 350px;
+        }
+    </style>
 
    
 </body>

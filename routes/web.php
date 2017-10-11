@@ -32,7 +32,7 @@ Auth::routes();
         Route::get('/admin_repository', 'SistemController@repository_index');
 
         Route::post('/edit_article', 'SistemController@editArticle');
-        Route::post('/edit_article_open', 'SistemController@editArticleView');
+        Route::get('/edit_article_open', 'SistemController@editArticleView');
 
         Route::post('/delete_photo', 'SistemController@deletePhoto');
 

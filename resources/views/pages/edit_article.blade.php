@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="nama_paket">Konten Berita</label><br>
-                <textarea name="konten_berita" rows="4" cols="50">{{$article->konten}}</textarea>
+                <textarea class="tinymce" id="froala-editor" name="konten_berita" rows="7" cols="78">{{$article->konten}}</textarea>
                 <!--<input type="text" class="form-control" id="insert-deskripsi" name="deskripsi" placeholder="tuliskan deskripsi toko mu" required>-->
             </div>
             <div class="form-group">

@@ -9,18 +9,19 @@ use App\Category;
 use App\Repository_category;
 use App\Repository;
 use App\Photo;
+use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\DB;
 use \File as File;
 
 class SistemController extends Controller
-{
-    public function __construct()
     {
-        $this->middleware('auth:admin');
-    }
-    
-    public function article_index(){
+        public function __construct()
+        {
+            $this->middleware('auth:admin');
+        }
+
+        public function article_index(){
         $articles = Article::orderBy('created_at', 'desc')->paginate(4);
         $categories = Category::all();
         $photos = Photo::all();
@@ -100,8 +101,11 @@ class SistemController extends Controller
         return redirect()->action('SistemController@article_index'); 
     }
     
-    public function editArticleView(Request $request){
-        $article = Article::find($request->article_id);
+    public function editArticleView(){
+        $article_id = Input::get('article_id', 'default category');
+        $id = (int)$article_id;
+        
+        $article = Article::find($article_id);
         $categories = Category::all();
         $photos = Photo::all();
         return view('pages/edit_article', ['article' => $article, 'categories' => $categories, 'photos'=>$photos]);
