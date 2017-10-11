@@ -17,7 +17,7 @@ Route::get('/product', 'HomeController@product');
 Route::get('/news-event', 'HomeController@news_event');
 Route::get('/news-championship', 'HomeController@news_championship');
 Route::get('/news-competition', 'HomeController@news_competition');
-Route::post('/article_view', 'HomeController@articleViewOpen');
+Route::get('/article_view', 'HomeController@articleViewOpen');
 Route::get('/download', 'HomeController@getDownload');
 
 Auth::routes();

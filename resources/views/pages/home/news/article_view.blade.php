@@ -39,7 +39,6 @@
 
 @section('content')
     <!--Service-intro-start -->
-                <?php $ada_photo = 0; ?>
 				<section class="service-intro-wrap section-padding">
 					<div class="container">
 						<div class="row">
@@ -47,28 +46,22 @@
 								<div class="service-intro-thumb text-center">
                                     <div class="owl-carousel fleet-carousel">
                                     @foreach($photos as $photo)
-                                    <div class="item">
-                                        <div class="owl-item-thumb">
-                                            <img src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
-                                            <div class="owl-item-overlay"></div>
-                                            <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
-                                        </div>
-                                    </div>
-                                    @php
-                                        $ada_photo++;
-                                    @endphp
+                                        @if($photo->article_id === $article->id)
+                                            <div class="item">
+                                                <div class="owl-item-thumb">
+                                                    <img src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
+                                                    <div class="owl-item-overlay"></div>
+                                                    <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
+                                                </div>
+                                            </div>
+                                        @endif
                                     @endforeach
-                                    @if($ada_photo === 0)
-                                        <img src="{{'/src/img/article_photos/dummy-article-img.jpg'}}" alt="">
-                                        </div>
-                                    @else
                                     </div>
                                         <div class="fleet-carousel-navigation 
 								slider-control">
 								    <span class="prev left"><i class="flaticon-previous11"></i></span>
 								    <span class="next right"><i class="flaticon-next15"></i></span>
 							     </div>
-                                    @endif
 								</div>
 							</div><!--/.col-->
 							<div class="col-sm-6">
@@ -77,7 +70,7 @@
 									<div class="section-heading">
 										<h2 class="section-title">{{$article->judul}}</h2>
                                     </div>
-                                    <div class="konten"></div>
+                                    <div class="konten">{{$article->konten}}</div>
 									<div class="row">
 										<div class="col-sm-6">
 											<ul>
@@ -109,7 +102,7 @@
 				</section>
 				<!--/Service-intro-end -->
 <script>
-    {{$article-konten}}
+    {{$article->konten}}
 </script>
 @endsection
 

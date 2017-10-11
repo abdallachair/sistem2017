@@ -56,18 +56,16 @@
                             $count = 0;
                         @endphp
                         @foreach($articles as $article)
-                            <?php $count_photo = 0;?>
-                            @php
-                                if($count === $count_article+4) {
+                            @php 
+                              $count_photo = 0
+                            @endphp
+                                @if($count === $count_article+4)
                                     $count = 0;
                                     $ada_article = true;
                                     break;
-                                }
-                            @endphp
+                                @endif              
                             @if($count < $count_article)
-                                @php
-                                    $count++;    
-                                @endphp
+                                $count++;
                             @else
                                 @if($article->display === 1 && $article->kategori === 2)
                                 <?php $ada_photo = 0; ?>
@@ -75,35 +73,39 @@
 								        <div class="item">
                                                 <div class="owl-item-thumb">
                                                     @foreach($photos as $photo)
-                                                        <?php if($count_photo === 1) break; ?>
                                                         @if($article->thumbnail_id === $photo->id)
                                                             <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img class="pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt=""></a>
-                                                            <?php $count_photo++;
-                                                            $ada_photo++;?>
                                                         @endif 
                                                     @endforeach
-                                                    @if($ada_photo === 0)
-                                                        <img class="pict" src="{{'/src/img/article_photos/dummy-article-img.jpg'}}" alt="">
-                                                    @endif
                                                 </div><!-- owl-item-thumb -->
                                                 <div class="owl-tem-content">
-                                                    <h3><a href="#">{{$article->judul}}</a></h3>
-                                                    <p>{{$article->created_at}}<p>
+                                                    <form method="get" action="article_view">
+                                                    <h3>{{$article->judul}}</a></h3>
+                                                    <p>{{date('d F Y', strtotime($article->created_at))}}<p>
                                                     {{str_limit($article->konten, 70)}}
-                                                    <a class="btn btn-primary" href="#">Continue reading<i class="fa fa-long-arrow-right"></i></a>
+                                                    <button type="submit" class="btn btn-primary">Continue reading<i class="fa fa-long-arrow-right"></i></button>
+                                                    <input type="hidden" name="article_id" value="{{$article->id}}">
+                                                    </form>
                                                 </div><!-- owl-item-content -->
                                            </div><!-- /item -->
 						</div><!-- /item -->
                         @php
-                            $count++;
+                              $count++;
+                              if($count >= 4){
+                                break;
+                              }
                         @endphp
                         @endif
                     @endif
-                    @endforeach
+                    @endforeach 
                         </div>
                     </div>
                     </section>
                         @php
+                            if($count < 4 && $count > 0){
+                                $count_article = $count;
+                                break;
+                            }
                             if($ada_article === true){
                                 $count_article+=4;
                             }
@@ -112,17 +114,11 @@
                 @if($count_article === 0)
                     <section class="fleets-wrap home">
                         <div class="container text-center">
-                            <p>Maaf, untuk saat ini belum tersedia berita lomba</p>
+                            <p>Maaf, untuk saat ini belum tersedia artikel berita</p>
                         </div>
                     </section>
                 @endif
-                        <section class="pagination-wrap">
-
-									<div class="pagination">
-                                        {{$articles -> links()}}
-									</div>
-								
-
-							</section>	
+                
+                        	
     
 @endsection

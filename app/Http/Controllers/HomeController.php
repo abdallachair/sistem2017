@@ -9,6 +9,7 @@ use App\Category;
 use App\Repository_category;
 use App\Repository;
 use App\Photo;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -41,8 +42,8 @@ class HomeController extends Controller
         return view('pages/home/about',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
     }
     
-    public function articleView(){
-        $articles = Article::where('display', '=', '1');
+    public function articleView($id){
+        $articles = Article::where('display', '=', '1')->where('id', '=', $id);
         $categories = Category::all();
         $photos = Photo::all();
         return view('pages/home/news/article_view',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
@@ -69,9 +70,9 @@ class HomeController extends Controller
         return view('pages/home/news/news-competition',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
     }
     
-    public function articleViewOpen(Request $request){
-        $id = $request->article_id;
-        $ids = (int)$id;
+    public function articleViewOpen(){
+        $article_id = Input::get('article_id', 'default category');
+        $id = (int)$article_id;
         
         $article = Article::find($id);
         $categories = Category::all();

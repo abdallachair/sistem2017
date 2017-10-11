@@ -79,12 +79,11 @@
                                                     @endforeach
                                                 </div><!-- owl-item-thumb -->
                                                 <div class="owl-tem-content">
-                                                    <form method="post" action="article_view">
-                                                        {{ csrf_field() }}
-                                                    <h3><a href="#">{{$article->judul}}</a></h3>
+                                                    <form method="get" action="article_view">
+                                                    <h3>{{$article->judul}}</a></h3>
                                                     <p>{{date('d F Y', strtotime($article->created_at))}}<p>
                                                     {{str_limit($article->konten, 70)}}
-                                                    <button type="submit" class="btn btn-primary" href="#">Continue reading<i class="fa fa-long-arrow-right"></i></button>
+                                                    <button type="submit" class="btn btn-primary">Continue reading<i class="fa fa-long-arrow-right"></i></button>
                                                     <input type="hidden" name="article_id" value="{{$article->id}}">
                                                     </form>
                                                 </div><!-- owl-item-content -->
