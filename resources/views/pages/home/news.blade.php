@@ -11,7 +11,7 @@
 
 
 @section('content')
-<div class="perspective">
+<div class="perspective effect-rotate-left">
   <div class="container">
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
@@ -29,67 +29,17 @@
 
         <nav class="l-side-nav">
           <ul class="side-nav">
-            <li class="is-active"><span>Home</span></li>
-            <li><span>Division</span></li>
-            <li><span>News</span></li>
+            <li class="is-active"><span>News</span></li>
+            
            
           </ul>
         </nav>
 
 
         <ul class="l-main-content main-content">
-          <li class="l-section section section--is-active">
-            <div class="intro">
-                   <img src="assets/img/sistem.png" style="display: block;" id="home-logo" alt="Welcome">
-            </div>
-          </li>
 
-           
 
-          <li class="l-section section">
-            <div class="work">
-              <h1 style="color: black; text-align: center; ">SISTEM DIVISION</h1>
-            
-             <div style="display: inline-block; text-align: center; margin-left: 5%; margin-right: 5%;">
-               
-                   <div class="item-divisi 1">
-                      <div class="slider--item-image">
-                        <img src="assets/img/busdev.png" alt="Victory">
-                      </div>
-                      <p class="slider--item-title">Business Development</p>
-                      <p class="slider--item-description"></p>
-                   </div>
-                 
-                   <div class="item-divisi 2">
-                      <div class="slider--item-image">
-                        <img src="assets/img/km.png" alt="Metiew and Smith">
-                      </div>
-                      <p class="slider--item-title">Knowledge Management</p>
-                      <p class="slider--item-description"></p>
-                   </div>
-                
-                
-                     <div class="item-divisi 3">
-                      <div class="slider--item-image">
-                        <img src="assets/img/hcm.png" alt="Alex Nowak">
-                      </div>
-                      <p class="slider--item-title">Human Capital Management</p>
-                      <p class="slider--item-description"></p>
-                   
-                 </div>
-                  <div class="item-divisi 4">
-                      <div class="slider--item-image">
-                        <img src="assets/img/im.png" alt="Alex Nowak">
-                      </div>
-                      <p class="slider--item-title">Information Management</p>
-                      <p class="slider--item-description"></p>
-                    </div>
-                </div> 
-              
-            </div>
-          </li>
-
-           <li class="l-section section">
+           <li class="l-section section section--is-active">
             <div class="work">
               <h2 style="color: black;">NEWS</h2>
               <div class="work--lockup">
@@ -153,9 +103,9 @@
     </div>
   </div>
   <ul class="outer-nav" style="color: black;">
-    <li ><a style="color: #D21E06;" href="{{ url('/') }}">Home</a></li>
+    <li ><a  href="{{ url('/') }}">Home</a></li>
     <li><a href="{{ url('/about') }}">About</a></li>
-     <li><a href="{{ url('/news') }}">News</a></li>
+     <li><a style="color: #D21E06;" href="{{ url('/news') }}">News</a></li>
     <li><a href="{{ url('/product') }}">Products</a></li>
     <li><a href="{{ url('/contact') }}">Contact</a></li>
   </ul>

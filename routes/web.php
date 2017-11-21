@@ -13,7 +13,9 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
+Route::get('/news', 'HomeController@news');
 Route::get('/product', 'HomeController@product');
+Route::get('/product-kategori', 'HomeController@productKategori');
 Route::get('/news-event', 'HomeController@news_event');
 Route::get('/news-championship', 'HomeController@news_championship');
 Route::get('/news-competition', 'HomeController@news_competition');

@@ -34,6 +34,13 @@ class HomeController extends Controller
         $photos = Photo::all();
         return view('pages/home/index',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
     }
+
+    public function news(){
+        $articles = Article::all();
+        $categories = Category::all();
+        $photos = Photo::all();
+        return view('pages/home/news',['articles'=>$articles, 'categories'=>$categories, 'photos'=>$photos]);
+    }
     
     public function about(){
         $articles = Article::all();
@@ -85,6 +92,14 @@ class HomeController extends Controller
         $repository_categories2 = Repository_category::all();
         $repositories = Repository::all();
         return view('pages/home/product',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
+    }
+
+    public function productKategori(){
+        
+        $repository_categories = Repository_category::all();
+        $repository_categories2 = Repository_category::all();
+        $repositories = Repository::all();
+        return view('pages/home/product-kategori',['repositories'=>$repositories, 'repository_categories'=>$repository_categories, 'repository_categories2'=>$repository_categories2]);
     }
     
 }

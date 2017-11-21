@@ -6,17 +6,24 @@
 
 @section('css')
    
+    
+
+   
 @endsection 
+
+
+
+
 
 @section('content')
 
    <div class="perspective effect-rotate-left">
-  <div class="container">
+  <div class="container"><div class="outer-nav--return"></div>
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
         
         <header class="header">
-          <a class="header--logo" href="{{ url('/')}}">
+          <a class="header--logo" href="#0">
             <img src="assets/img/sistem.png" width="60px" alt="SISTEM FASILKOM UI 2017">
             <p>SISTEM FASILKOM UI</p>
           </a>
@@ -64,16 +71,13 @@
                                     @endphp
                                 @else
                                 <div class="col-md-3">
-                                    <form method="get" action="product-kategori">
-                                        <button class="buttons products-{{$repository_category->id}}" name="product_id" value="{{$repository_category->id}}">
-                                        {{$repository_category->nama_kategori}}</button>
-                                    </form>
-                                   <!--  @foreach($repositories as $repository)
+                                        
+                                    @foreach($repositories as $repository)
                                         @if($repository_category->id == $repository->kategori_repositori)
                                             <a href="/src/files/{{$repository->nama}}" name="file_name" value="{{$repository->nama}}">
                                                 <li class="p{{$repository_category->id}}">{{$repository->nama}}</li></a>
                                         @endif
-                                    @endforeach -->
+                                    @endforeach
                                 </div>
                                 @php
                                     $count_2++;
@@ -107,7 +111,7 @@
     <li class="is-active"><a href="{{ url('/') }}">Home</a></li>
     <li><a href="{{ url('/about') }}">About</a></li>
     <li><a href="{{ url('/news') }}">News</a></li>
-    <li><a style="color: #D21E06;" href="{{ url('/product') }}">Products</a></li>
+    <li><a href="{{ url('/product') }}">Products</a></li>
     <li><a href="{{ url('/contact') }}">Contact</a></li>
   </ul>
 </div>
@@ -116,20 +120,3 @@
 <script src="assets/js/functions-min.js"></script>
 @endsection
 
-@section('footer')
-    <script>
-    @foreach($repository_categories as $repository_category)
-    
-                            $(document).ready(function(){
-                                    
-                                $(".p{{$repository_category->id}}").hide();
-                                    
-                                  $(".product-{{$repository_category->id}}").click(function(){
-                                  $(".p{{$repository_category->id}}").toggle(500);
-                                  });
-                                    
-                            });
-    
-    @endforeach
-    </script>
-@endsection

@@ -1,57 +1,58 @@
 @extends('layouts.master')
 
 @section('title')
-    Sistem Fasilkom UI 2017
+    Winner | Sistem Fasilkom UI 2017
 @endsection 
 
-@section('navbar')
-    <div class="collapse navbar-collapse navbar-collapse">
-        <span class="search-button pull-right"><a href="#search"><i class="fa fa-search"></i></a></span>
-        <ul class="nav navbar-nav hidden-sm">
-            <li><a href="/">Home</a></li>
-            <li><a href="about">About</a></li>
-            <!-- Services -->
-            <li class="dropdown active"><a>NEWS <b class="caret"></b></a>
-				<!-- submenu-wrapper -->
-            <div class="submenu-wrapper submenu-wrapper-topbottom">
-            <div class="submenu-inner  submenu-inner-topbottom">
-            <ul class="dropdown-menu">
-                <li><a href="news-event">EVENT</a></li>
-                <li><a href="news-competition">COMPETITION</a></li>
-                <li><a href="news-championship" class="active">CHAMPIONSHIP</a></li>
-            </ul>
-            </div>
-            </div>
-            <!-- /submenu-wrapper -->
-            </li>
-            <!-- /Services -->
+@section('css')
+     <link rel="stylesheet" href="assets/css/main.css">
+@endsection 
 
-            <!-- Blog -->
-            <li><a href="article.html?">ARTICLE </a>
-            </li>
 
-            <!-- /Blog -->
-            <li><a href="contact.html">PRODUCTS</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-    </div>
-@endsection
 
 @section('content')
-    <!-- portfolio-section start -->
-				<section class="fleets-wrap home">
-					<div class="container text-center">
-						<div class="section-heading text-center">
-							<h1 class="section-title logo">CHAMPIONSHIP</h1>
-						</div>
-					</div><!--/.container-->
+<div class="perspective effect-rotate-left">
+  <div class="container">
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        
+        <header class="header">
+          <a class="header--logo" href="{{ url('/')}}">
+            <img src="assets/img/sistem.png" width="60px" alt="SISTEM FASILKOM UI 2017">
+            <p>SISTEM FASILKOM UI</p>
+          </a>
+         
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>
+        </header>
+
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Winner</span></li>
+           
+            
+          </ul>
+        </nav>
+
+
+        <ul class="l-main-content main-content">
+          
+
+           
+
+          <li class="l-section section section--is-active">
+            <div class="work">
+              
+            <section>
+                    
                     @php
                             $count_article = 0;
                             $ada_article = false;
                     @endphp
                     @for ($i = 0; $i < 4; $i++)
-                        <div class="row text-center">
-						  <div class="col-md-12">
+                        <div class="row">
+                         
                         @php
                             $count = 0;
                         @endphp
@@ -69,8 +70,8 @@
                             @else
                                 @if($article->display === 1 && $article->kategori === 1)
                                 <?php $ada_photo = 0; ?>
-						          <div class="col-md-3">
-								        <div class="item">
+                                  <div class="col-md-3">
+                                        <div class="item">
                                                 <div class="owl-item-thumb">
                                                     @foreach($photos as $photo)
                                                         @if($article->thumbnail_id === $photo->id)
@@ -81,16 +82,16 @@
                                                 <div class="owl-tem-content">
                                                     <form method="get" action="article_view">
                                                     <h3 style="text-transform: capitalize;">{{$article->judul}}</a></h3>
-                                                    <div>
+                                                    
                                                     <p>{{date('d F Y', strtotime($article->created_at))}}<p>
                                                     {!!html_entity_decode(str_limit($article->konten, 20))!!}
-                                                    </div>
+                                                    
                                                     <button type="submit" class="btn btn-primary">Continue reading<i class="fa fa-long-arrow-right"></i></button>
                                                     <input type="hidden" name="article_id" value="{{$article->id}}">
                                                     </form>
                                                 </div><!-- owl-item-content -->
                                            </div><!-- /item -->
-						</div><!-- /item -->
+                        </div><!-- /item -->
                         @php
                               $count++;
                               if($count >= 4){
@@ -101,7 +102,7 @@
                     @endif
                     @endforeach 
                         </div>
-                    </div>
+                    
                     </section>
                         @php
                             if($count < 4 && $count > 0){
@@ -117,10 +118,43 @@
                     <section class="fleets-wrap home">
                         <div class="container text-center">
                             <p>Maaf, untuk saat ini belum tersedia artikel berita</p>
+                            <a href="{{ url('/news')}}" class="btn btn-primary">Back to News Category<i class="fa fa-long-arrow-right"></i></a>
+                                                   
                         </div>
                     </section>
                 @endif
-                
-                        	
-    
+          </li>
+
+           
+        </ul>
+      </div>
+    </div>
+  </div>
+   <ul class="outer-nav" style="color: black;">
+    <li ><a  href="{{ url('/') }}">Home</a></li>
+    <li><a href="{{ url('/about') }}">About</a></li>
+     <li><a style="color: #D21E06;" href="{{ url('/news') }}">News</a></li>
+    <li><a href="{{ url('/product') }}">Products</a></li>
+    <li><a href="{{ url('/contact') }}">Contact</a></li>
+  </ul>
+</div>
+
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+<script src="assets/js/functions-min.js"></script>
+@endsection
+
+
+@section('pagination')
+    <div class="container">
+        <div class="row">
+                        
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">{{$articles -> links()}}</div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
 @endsection
