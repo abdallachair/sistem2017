@@ -2,11 +2,11 @@
 
 @section('title')
     Sistem Fasilkom UI 2017
-@endsection 
+@endsection
 
 @section('css')
      <link rel="stylesheet" href="assets/css/main.css">
-@endsection 
+@endsection
 
 
 
@@ -15,13 +15,13 @@
   <div class="container">
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
-        
+
         <header class="header">
           <a class="header--logo" href="{{ url('/')}}">
             <img src="assets/img/sistem.png" width="60px" alt="SISTEM FASILKOM UI 2017">
             <p>SISTEM FASILKOM UI</p>
           </a>
-         
+
           <div class="header--nav-toggle">
             <span></span>
           </div>
@@ -30,8 +30,8 @@
         <nav class="l-side-nav">
           <ul class="side-nav">
             <li class="is-active"><span>News</span></li>
-            
-           
+
+
           </ul>
         </nav>
 
@@ -50,7 +50,7 @@
                         <img src="assets/img/work-victory.jpg" alt="Victory">
                       </div>
                       <p class="slider--item-title">Event</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                   <li class="slider--item slider--item-center">
@@ -59,7 +59,7 @@
                         <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
                       </div>
                       <p class="slider--item-title">Competition</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                   <li class="slider--item slider--item-right">
@@ -68,7 +68,7 @@
                         <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
                       </div>
                       <p class="slider--item-title">Winner</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                 </ul>
@@ -94,10 +94,10 @@
           </li>
 
 
-          
-          
-          
-        
+
+
+
+
         </ul>
       </div>
     </div>

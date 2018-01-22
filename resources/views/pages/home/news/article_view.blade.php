@@ -2,7 +2,7 @@
 
 @section('title')
     Sistem Fasilkom UI 2017
-@endsection 
+@endsection
 
 @section('navbar')
     <div class="collapse navbar-collapse navbar-collapse">
@@ -50,7 +50,7 @@
                                             @if($photo->id === $article->thumbnail_id)
                                                 <div class="item">
                                                 <div class="owl-item-thumb">
-                                                    <img class="article_big_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
+                                                    <img class="article_big_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="" style="width: 20%;">
                                                     <div class="owl-item-overlay"></div>
                                                     <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
                                                 </div>
@@ -58,7 +58,7 @@
                                             @else
                                                 <div class="item">
                                                 <div class="owl-item-thumb">
-                                                    <img class="article_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="">
+                                                    <img class="article_pict" src="{{'/src/img/article_photos/'.$photo->img_src}}" alt="" style="width: 5%;"">
                                                     <div class="owl-item-overlay"></div>
                                                     <a class="img-link" href="{{'/src/img/article_photos/'.$photo->img_src}}"><img src="img/zoomin.png" alt="+"/></a>
                                                 </div>
@@ -67,7 +67,7 @@
                                         @endif
                                     @endforeach
                                     </div>
-                                        <div class="fleet-carousel-navigation 
+                                        <div class="fleet-carousel-navigation
 								slider-control">
 								    <span class="prev left"><i class="flaticon-previous11"></i></span>
 								    <span class="next right"><i class="flaticon-next15"></i></span>
@@ -115,4 +115,3 @@
     {{$article->konten}}
 </script>
 @endsection
-

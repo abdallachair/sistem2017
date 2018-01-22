@@ -2,11 +2,11 @@
 
 @section('title')
     Sistem Fasilkom UI 2017
-@endsection 
+@endsection
 
 @section('css')
      <link rel="stylesheet" href="assets/css/main.css">
-@endsection 
+@endsection
 
 
 
@@ -15,13 +15,13 @@
   <div class="container">
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
-        
+
         <header class="header">
           <a class="header--logo" href="{{ url('/')}}">
             <img src="assets/img/sistem.png" width="60px" alt="SISTEM FASILKOM UI 2017">
             <p>SISTEM FASILKOM UI</p>
           </a>
-         
+
           <div class="header--nav-toggle">
             <span></span>
           </div>
@@ -32,7 +32,7 @@
             <li class="is-active"><span>Home</span></li>
             <li><span>Division</span></li>
             <li><span>News</span></li>
-           
+
           </ul>
         </nav>
 
@@ -44,14 +44,14 @@
             </div>
           </li>
 
-           
+
 
           <li class="l-section section">
             <div class="work">
               <h1 style="color: black; text-align: center; ">SISTEM DIVISION</h1>
-            
+
              <div style="display: inline-block; text-align: center; margin-left: 5%; margin-right: 5%;">
-               
+
                    <div class="item-divisi 1">
                       <div class="slider--item-image">
                         <img src="assets/img/busdev.png" alt="Victory">
@@ -59,7 +59,7 @@
                       <p class="slider--item-title">Business Development</p>
                       <p class="slider--item-description"></p>
                    </div>
-                 
+
                    <div class="item-divisi 2">
                       <div class="slider--item-image">
                         <img src="assets/img/km.png" alt="Metiew and Smith">
@@ -67,15 +67,15 @@
                       <p class="slider--item-title">Knowledge Management</p>
                       <p class="slider--item-description"></p>
                    </div>
-                
-                
+
+
                      <div class="item-divisi 3">
                       <div class="slider--item-image">
                         <img src="assets/img/hcm.png" alt="Alex Nowak">
                       </div>
                       <p class="slider--item-title">Human Capital Management</p>
                       <p class="slider--item-description"></p>
-                   
+
                  </div>
                   <div class="item-divisi 4">
                       <div class="slider--item-image">
@@ -84,8 +84,8 @@
                       <p class="slider--item-title">Information Management</p>
                       <p class="slider--item-description"></p>
                     </div>
-                </div> 
-              
+                </div>
+
             </div>
           </li>
 
@@ -100,7 +100,7 @@
                         <img src="assets/img/work-victory.jpg" alt="Victory">
                       </div>
                       <p class="slider--item-title">Event</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                   <li class="slider--item slider--item-center">
@@ -109,7 +109,7 @@
                         <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
                       </div>
                       <p class="slider--item-title">Competition</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                   <li class="slider--item slider--item-right">
@@ -118,7 +118,7 @@
                         <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
                       </div>
                       <p class="slider--item-title">Winner</p>
-                      <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                      <p class="slider--item-description"></p>
                     </a>
                   </li>
                 </ul>
@@ -144,10 +144,10 @@
           </li>
 
 
-          
-          
-          
-        
+
+
+
+
         </ul>
       </div>
     </div>

@@ -2,11 +2,11 @@
 
 @section('title')
     Sistem Fasilkom UI 2017
-@endsection 
+@endsection
 
 @section('css')
-   
-@endsection 
+
+@endsection
 
 @section('content')
 
@@ -14,13 +14,13 @@
   <div class="container">
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
-        
+
         <header class="header">
           <a class="header--logo" href="{{ url('/')}}">
             <img src="assets/img/sistem.png" width="60px" alt="SISTEM FASILKOM UI 2017">
             <p>SISTEM FASILKOM UI</p>
           </a>
-         
+
           <div class="header--nav-toggle">
             <span></span>
           </div>
@@ -29,40 +29,24 @@
         <nav class="l-side-nav">
           <ul class="side-nav">
             <li class="is-active"><span>Products</span></li>
-            
-            
+
+
           </ul>
         </nav>
 
 
         <ul class="l-main-content main-content">
-          <li class="l-section section section--is-active"> 
+          <li class="l-section section section--is-active">
             <div class="intro">
             <section>
-                
+
                 <div>
                     <div>
                         @php
                             $count = $repository_categories->count();
-                            $count_3 = 0;
                         @endphp
-                        @for ($i = 0; $i < $count/4; $i++)
-                            @php
-                                $count_2 = 0;
-                            @endphp
                             <div class="row">
                             @foreach($repository_categories as $repository_category)
-                                @php
-                                    if($count_2 === $count_3 + 4){
-                                        $count_2 = 0;
-                                        break;
-                                    }
-                                @endphp
-                                @if($count_2 < $count_3)
-                                    @php
-                                        $count_2++;
-                                    @endphp
-                                @else
                                 <div class="col-md-3">
                                     <form method="get" action="product-kategori">
                                         <button class="buttons products-{{$repository_category->id}}" name="product_id" value="{{$repository_category->id}}">
@@ -75,20 +59,11 @@
                                         @endif
                                     @endforeach -->
                                 </div>
-                                @php
-                                    $count_2++;
-                                @endphp
-                                @endif
-                                
                             @endforeach
                             </div>
-                            @php
-                                $count_3 += 4;
-                            @endphp
-                        @endfor
                     </div>
                 </div>
-                @if($count_3 === 0)
+                @if($count === 0)
                     <section class="fleets-wrap home">
                         <div class="container text-center">
                             <p>Maaf, untuk saat ini belum tersedia produk</p>
@@ -119,17 +94,17 @@
 @section('footer')
     <script>
     @foreach($repository_categories as $repository_category)
-    
+
                             $(document).ready(function(){
-                                    
+
                                 $(".p{{$repository_category->id}}").hide();
-                                    
+
                                   $(".product-{{$repository_category->id}}").click(function(){
                                   $(".p{{$repository_category->id}}").toggle(500);
                                   });
-                                    
+
                             });
-    
+
     @endforeach
     </script>
 @endsection
